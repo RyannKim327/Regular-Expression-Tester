@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Test Regex</title>
+		<meta name="og:description" content="A simple regex tester for those who want to try regex patterns.">
+		<meta name="og:title" content="Regular Expression Tester">
+		<meta name="og:keyword" name="regex tester, regex test, regular expression tester, regular expression">
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				border: none;
+				box-sizing: 0;
+				outline: 0;
+			}
+			div{
+				background-color: #dedede;
+				color: #000000;
+				display: flex;
+				border-radius: 0.5em;
+				margin: 0.5em;
+				padding: 0.5em;
+				flex-direction: column;
+			}
+			div div{
+				text-align: center;
+				background-color: #d0d0d0;
+			}
+			div .flex{
+				display: flex;
+				flex-direction: column;
+			}
+			div .flex label, div .flex ul{
+				width: 45em;
+				text-align: left;
+			}
+			div .flex .li{
+				list-style: decimal-leading-zero;
+			}
+			div input{
+				margin: 0 0.5em;
+				color: #000000;
+				border: 2px #000000 solid;
+				margin: 0.25em;
+				background-color: #dedede;
+				border-radius: 0.5em;
+				padding: 0 0.5em;
+			}
+			div p{
+				margin-left: 1em;
+			}
+			@media only screen and (min-width: 760px){
+				div input{
+					height: 2.5em;
+				}
+				div .flex{
+					display: flex;
+					flex-direction: row;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="base">
+			<div>
+				<h1>Regex Tester</h1>
+				<h3>MPOP Reverse II</h3>
+			</div>
+			<input type="text" id="input" onkeyup="func()" placeholder="Enter your string here">
+			<input type="text" id="regex" onkeyup="func()" placeholder="Enter your regex here">
+			<p>For the regex, credits to this repossitory for the <a href="https://github.com/CoreyMSchafer/code_snippet/blob/master/Regular-Expressions/snippets.txt">Regular Expressions Snippets</a> also in Rovie Francisco. Credits also to Jerson Carin for others regex related topics.</p>
+			<div class="flex" id="out">
+				<label id="matches">Match Result:</label>
+				<ul class="li">
+					<label>Regex samples</label>
+					<li>. - Any character except new line</li>
+					<li>\w - World or alpha numeric characters including underscore</li>
+					<li>\s - Whitespaces</li>
+					<li>\d - Digit or numerical</li>
+					<li>\W - Not an alphanumeric character</li>
+					<li>\S - Not a whitespace</li>
+					<li>\b - Word Boundary</li>
+					<li>\B - Not a Word Boundary</li>
+					<li>^ - Beginning of a String</li>
+					<li>$ - End of a String</li>
+					<li>[] - Matches characters in the bracket</li>
+					<li>[^] - Matches characters NOT in the bracket</li>
+					<li>| - Either or OR</li>
+					<li>() - Group</li>
+				</ul>
+				<ul class="li">
+					<label>Qualifiers:</label>
+					<li>* - 0 or more</li>
+					<li>+ - 1 or more</li>
+					<li>? - 0 or one</li>
+					<li>{n} - Exact number example: {3}</li>
+					<li>{from, to} - Range of Numbers example: {3, 4}</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		class regex{
+			constructor(string){
+				this.reg = new RegExp(string, "i")
+			}
+			test(str){
+				return this.reg.test(str)
+			}
+			m(str){
+				return str.match(this.reg)
+			}
+		}
+		let _i = document.getElementById("input")
+		let regx = document.getElementById("regex")
+		let match = document.getElementById("matches")
+		function func(){
+			let i = _i.value
+			let r = regx.value
+			let reg = new regex(r)
+			if(r == "" || i == ""){
+				input.style.borderColor = "#000000"
+				regx.style.borderColor = "#000000"
+				input.style.backgroundColor = "#dedede"
+				regx.style.backgroundColor = "#dedede"
+				document.getElementById("base").style.backgroundColor = "#dedede"
+				document.getElementById("out").style.backgroundColor = "#dedede"
+			}else if(reg.test(i)){
+				input.style.borderColor = "green"
+				regx.style.borderColor = "green"
+				input.style.backgroundColor = "#deffde"
+				regx.style.backgroundColor = "#deffde"
+				document.getElementById("base").style.backgroundColor = "#deffde"
+				document.getElementById("out").style.backgroundColor = "#deffde"
+				let li = "<ol>"
+				let m = reg.m(i)
+				for(let x in m){
+					li += `<li>${m[x]}</li>`
+				}
+				m += "</ol>"
+				match.innerHTML = "Matches Result: " + li
+			}else{
+				input.style.borderColor = "red"
+				regx.style.borderColor = "red"
+				input.style.backgroundColor = "#ffdede"
+				regx.style.backgroundColor = "#ffdede"
+				document.getElementById("base").style.backgroundColor = "#ffdede"
+				document.getElementById("out").style.backgroundColor = "#ffdede"
+				match.textContent = "No Match"
+			}
+		}
+	</script>
+</html>
