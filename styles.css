@@ -1,0 +1,54 @@
+*{
+	margin: 0;
+	padding: 0;
+	border: none;
+	box-sizing: 0;
+	outline: 0;
+}
+div{
+	background-color: #dedede;
+	color: #000000;
+	display: flex;
+	border-radius: 0.5em;
+	margin: 0.5em;
+	padding: 0.5em;
+	flex-direction: column;
+}
+div div{
+	text-align: center;
+	background-color: #d0d0d0;
+}
+div .flex{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+div .flex label, div .flex ul{
+	width: 45em;
+	text-align: left;
+}
+div .flex .li{
+	list-style: decimal-leading-zero;
+}
+div input{
+	margin: 0 0.5em;
+	color: #000000;
+	border: 2px #000000 solid;
+	margin: 0.25em;
+	background-color: #dedede;
+	border-radius: 0.5em;
+	padding: 0 0.5em;
+	height: 1.5em;
+}
+div p{
+	margin-left: 1em;
+}
+@media only screen and (min-width: 760px){
+	div input{
+		height: 2.5em;
+	}
+	div .flex{
+		display: flex;
+		flex-direction: row;
+	}
+}
