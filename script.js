@@ -24,6 +24,7 @@ function func(){
 		regx.style.backgroundColor = "#dedede"
 		document.getElementById("base").style.backgroundColor = "#dedede"
 		document.getElementById("out").style.backgroundColor = "#dedede"
+		res.style.backgroundColor = "#deffde"
 		res.value = ""
 	}else if(reg.test(i)){
 		input.style.borderColor = "green"
@@ -32,6 +33,7 @@ function func(){
 		regx.style.backgroundColor = "#deffde"
 		document.getElementById("base").style.backgroundColor = "#deffde"
 		document.getElementById("out").style.backgroundColor = "#deffde"
+		res.style.backgroundColor = "#deffde"
 		let li = "<ol>"
 		let m = reg.m(i)
 		for(let x in m){
@@ -47,6 +49,7 @@ function func(){
 		regx.style.backgroundColor = "#ffdede"
 		document.getElementById("base").style.backgroundColor = "#ffdede"
 		document.getElementById("out").style.backgroundColor = "#ffdede"
+		res.style.backgroundColor = "#ffdede"
 		match.textContent = "No Match"
 		res.value = ""
 	}

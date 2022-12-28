@@ -21,7 +21,6 @@ div div{
 div .flex{
 	display: flex;
 	flex-direction: column;
-	flex-wrap: wrap;
 }
 div .flex label, div .flex ul{
 	width: 45em;
@@ -29,6 +28,7 @@ div .flex label, div .flex ul{
 }
 div .flex .li{
 	list-style: decimal-leading-zero;
+	margin-left: 1.5em;
 }
 div input{
 	margin: 0 0.5em;
@@ -41,7 +41,7 @@ div input{
 	height: 1.5em;
 }
 div p{
-	margin-left: 1em;
+	margin-left: 1.5em;
 }
 @media only screen and (min-width: 760px){
 	div input{
