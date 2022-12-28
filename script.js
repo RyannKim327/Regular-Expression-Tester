@@ -11,6 +11,7 @@ class regex{
 }
 let _i = document.getElementById("input")
 let regx = document.getElementById("regex")
+let res = document.getElementById("res")
 let match = document.getElementById("matches")
 function func(){
 	let i = _i.value
@@ -23,6 +24,7 @@ function func(){
 		regx.style.backgroundColor = "#dedede"
 		document.getElementById("base").style.backgroundColor = "#dedede"
 		document.getElementById("out").style.backgroundColor = "#dedede"
+		res.value = ""
 	}else if(reg.test(i)){
 		input.style.borderColor = "green"
 		regx.style.borderColor = "green"
@@ -37,6 +39,7 @@ function func(){
 		}
 		m += "</ol>"
 		match.innerHTML = "Matches Result: " + li
+		res.value = `/${r}/i`
 	}else{
 		input.style.borderColor = "red"
 		regx.style.borderColor = "red"
@@ -45,5 +48,6 @@ function func(){
 		document.getElementById("base").style.backgroundColor = "#ffdede"
 		document.getElementById("out").style.backgroundColor = "#ffdede"
 		match.textContent = "No Match"
+		res.value = ""
 	}
 }
