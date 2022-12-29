@@ -1,6 +1,10 @@
 class regex{
-	constructor(string){
-		this.reg = new RegExp(string, "i")
+	constructor(string, insensitive){
+		if(insensitive){
+			this.reg = new RegExp(string, "")
+		}else{
+			this.reg = new RegExp(string, "i")
+		}
 	}
 	test(str){
 		return this.reg.test(str)
@@ -13,10 +17,13 @@ let _i = document.getElementById("input")
 let regx = document.getElementById("regex")
 let res = document.getElementById("res")
 let match = document.getElementById("matches")
+let insensitive = document.getElementById("insensitive")
+let label = document.getElementById("label-insensitive")
 function func(){
 	let i = _i.value
 	let r = regx.value
-	let reg = new regex(r)
+	label.textContent = (insensitive.checked) ? "Case Sensitive" : "Case Insensitive"
+	let reg = new regex(r, insensitive.checked)
 	if(r == "" || i == ""){
 		input.style.borderColor = "#000000"
 		regx.style.borderColor = "#000000"
@@ -41,7 +48,11 @@ function func(){
 		}
 		m += "</ol>"
 		match.innerHTML = "Matches Result: " + li
-		res.value = `/${r}/i`
+		if(insensitive.checked){
+			res.value = `/${r}/i`
+		}else{
+			res.value = `/${r}/`
+		}
 	}else{
 		input.style.borderColor = "red"
 		regx.style.borderColor = "red"
